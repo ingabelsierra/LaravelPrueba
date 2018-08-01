@@ -2,9 +2,13 @@
 
 @section('content')
 
-    <h2>Lista de Registros</h2>
+    <h2>Lista de Estudiantes</h2>
     <hr/>
-    <a class="btn btn-primary" href="students/create" style="margin-bottom: 15px;">Nuevo Registro</a>
+    <a class="btn btn-primary" href="students/create" style="margin-bottom: 15px;">Nuevo Estudiante</a>
+
+     <a class="btn btn-primary" href="teachers/create" style="margin-bottom: 15px;">Nuevo Profesor</a>
+
+     <a class="btn btn-primary" href="subjects/create" style="margin-bottom: 15px;">Nueva asignatura</a>
 
     @if(Session::has('message'))
     <div class="alert-custom">
@@ -20,6 +24,7 @@
             <th>Correo</th>
             <th>Facebook</th>
             <th>Celular</th>
+            <th>Asignatura</th>
             <th width="110px;">Editar</th>
             <th width="110px;">Borrar</th>
         </tr>
@@ -33,6 +38,7 @@
                 <td>{!! $student->email !!}</td>
                 <td>{!! $student->fb !!}</td>
                 <td>{!! $student->mobile !!}</td>
+                <td>{!! $student->subject !!}</td>
                 <td>
                     <a class="btn btn-success btn-sm" href="students/{!! $student->id !!}/edit">Editar</a>
 

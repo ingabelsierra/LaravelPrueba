@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Student;
-use App\Subject;
+use App\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use function Psy\debug;
 
-class StudentController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-	    $students = Student::orderBy('id')->get();
-        return view('students.index', ['students' => $students]);
+        $teachers = Teacher::orderBy('id')->get();
+        return view('teachers.index', ['teachers' => $teachers]);
     }
 
     /**
@@ -28,9 +27,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $subjects = Subject::orderBy('id')->get();
-        return view('students.create', ['subjects' => $subjects]);
-        
+        return view('teachers.create');
     }
 
     /**
@@ -41,20 +38,20 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-	    $data = $request->all();
-	    Student::create($data);
+        $data = $request->all();
+        Teacher::create($data);
 
-	    Session::flash('message', $data['name'] . ' added successfully');
-	    return redirect('/students');
+        Session::flash('message', $data['name'] . ' added successfully');
+        return redirect('/teachers');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Teacher $teacher)
     {
         //
     }
@@ -62,44 +59,44 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-    	$student = Student::find($id);
-        return view('students/edit', ['student' => $student]);
+        $teacher = Teacher::find($id);
+        return view('teachers/edit', ['teacher' => $teacher]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $student = Student::find($id);
+        $teacher = Teacher::find($id);
         $data = $request->all();
-        $student->update($data);
+        $teacher->update($data);
 
-	    Session::flash('message', $student['name'] . ' updated successfully');
-        return redirect('/students');
+        Session::flash('message', $teacher['name'] . ' updated successfully');
+        return redirect('/teachers');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-	    $student = Student::find($id);
-	    $student->destroy($id);
+        $teacher = Teacher::find($id);
+        $teacher->destroy($id);
 
-	    Session::flash('message', $student['name'] . ' deleted successfully');
-	    return redirect('/students');
+        Session::flash('message', $teacher['name'] . ' deleted successfully');
+        return redirect('/teachers');
     }
 }

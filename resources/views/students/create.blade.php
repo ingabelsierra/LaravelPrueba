@@ -4,7 +4,7 @@
 
     <h2>Crear Nuevo Registro</h2>
     <hr/>
-    <a class="btn btn-primary" href="/students" style="margin-bottom: 15px;">Lista De Registros</a>
+    <a class="btn btn-primary" href="../students" style="margin-bottom: 15px;">Lista De Registros</a>
 
     {!! Form::open(['id' => 'dataForm', 'url' => '/students']) !!}
     <div class="form-group">
@@ -26,6 +26,22 @@
         {!! Form::label('mobile', 'Celular'); !!}
         {!! Form::text('mobile', null, ['placeholder' => 'Ingrese Celular', 'class' => 'form-control']); !!}
     </div>
+
+    <div class="form-group">
+                <label >Asignatura</label>
+                 <input type="text" list="subject" name="subject" class="form-control" >
+                <datalist id="subject">
+                    @foreach ($subjects as $cat)
+                    <option label="{{ $cat->id}} {{ $cat->name}}" value="{{ $cat->id}}">
+                    @endforeach     
+                      
+                </datalist>
+                             
+              
+            </div>
+                
+
+    
 
     {!! Form::submit('Create', ['class' => 'btn btn-primary pull-right']); !!}
 
