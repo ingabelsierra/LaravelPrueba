@@ -18,6 +18,8 @@
         <tr>
             <th style="padding-left: 15px;">#</th>
             <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Profesor</th>
             <th width="110px;">Editar</th>
             <th width="110px;">Borrar</th>
         </tr>
@@ -28,6 +30,8 @@
             <tr>
                 <td style="padding-left: 15px;">{!! $subject->id !!}</td>
                 <td>{!! $subject->name !!}</td>
+                <td>{!! $subject->description !!}</td>
+                <td>{!! $subject->teacher !!}</td>
                 
                 <td>
                     <a class="btn btn-success btn-sm" href="subjects/{!! $subject->id !!}/edit">Editar</a>

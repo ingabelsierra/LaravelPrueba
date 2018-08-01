@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Subject;
+use App\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use function Psy\debug;
@@ -27,7 +28,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        return view('subjects.create');
+        $teachers = Teacher::orderBy('id')->get();
+        return view('subjects.create', ['teachers' => $teachers]);
     }
 
     /**

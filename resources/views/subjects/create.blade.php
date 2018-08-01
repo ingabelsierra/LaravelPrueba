@@ -13,6 +13,24 @@
         {!! Form::text('name', null, ['placeholder' => 'Ingrese nombre', 'class' => 'form-control']); !!}
     </div>
 
+    <div class="form-group">
+        {!! Form::label('description', 'Descripcion'); !!}
+        {!! Form::text('description', null, ['placeholder' => 'Ingrese la descripcion de la asignatura', 'class' => 'form-control']); !!}
+    </div>
+
+    <div class="form-group">
+                <label >Profesor</label>
+                 <input type="text" list="teacher" name="teacher" class="form-control" >
+                <datalist id="teacher">
+                    @foreach ($teachers as $cat)
+                    <option label="{{ $cat->id}} {{ $cat->name}}" value="{{ $cat->id}}">
+                    @endforeach     
+                      
+                </datalist>
+                             
+              
+    </div>
+
 
     {!! Form::submit('Create', ['class' => 'btn btn-primary pull-right']); !!}
 
