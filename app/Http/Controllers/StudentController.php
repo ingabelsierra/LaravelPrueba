@@ -18,7 +18,9 @@ class StudentController extends Controller
     public function index()
     {
 	    $students = Student::orderBy('id')->get();
-        return view('students.index', ['students' => $students]);
+        $subjects = Subject::orderBy('id')->get();
+        //return view('students.index', ['students' => $students]);
+        return view('students.index',array ('students'=>$students,'subjects'=>$subjects));
     }
 
     /**

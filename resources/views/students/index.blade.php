@@ -39,6 +39,7 @@
                 <td>{!! $student->fb !!}</td>
                 <td>{!! $student->mobile !!}</td>
                 <td>{!! $student->subject !!}</td>
+                                    
                 <td>
                     <a class="btn btn-success btn-sm" href="students/{!! $student->id !!}/edit">Editar</a>
 
